@@ -315,9 +315,13 @@ a.pub-preview-link {
 .venue-badge--cvpr { background: linear-gradient(180deg, #2b8ef0 0%, var(--badge-cvpr) 100%); }
 .venue-badge--iccv { background: linear-gradient(180deg, #f59e0b 0%, var(--badge-iccv) 100%); }
 .venue-badge--neurips {
-  background: linear-gradient(135deg, #5b3fc4 0%, var(--badge-neurips) 55%, #1f1a4d 100%);
-  letter-spacing: 0.04em;
-  font-size: 0.62rem;
+  background: linear-gradient(135deg, #6d4aff 0%, #3d2b8e 50%, #241a5c 100%);
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 8px;
 }
 .venue-badge--aaai { background: linear-gradient(180deg, #1aa8bb 0%, var(--badge-aaai) 100%); }
 .venue-badge--tpami { background: linear-gradient(180deg, #2da862 0%, var(--badge-tpami) 100%); }
