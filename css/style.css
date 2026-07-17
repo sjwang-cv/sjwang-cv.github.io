@@ -7,12 +7,12 @@
   --link: #007bff;
   --link-hover: #0056b3;
   --border: #dee2e6;
-  --badge-eccv: #e85d75;
-  --badge-cvpr: #0a84ff;
-  --badge-iccv: #ff6482;
-  --badge-neurips: #af52de;
-  --badge-aaai: #30b0c7;
-  --badge-journal: #34c759;
+  --badge-eccv: #c23b5a;
+  --badge-cvpr: #0b6bcb;
+  --badge-iccv: #d94866;
+  --badge-neurips: #3d2b8e;
+  --badge-aaai: #0e8a9a;
+  --badge-journal: #1f8a4c;
   --maxw: 800px;
   --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
@@ -292,27 +292,35 @@ a.pub-preview-link {
 .venue-badge {
   display: block;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: #fff;
-  padding: 0.35rem 0.4rem;
-  border-radius: 4px;
+  padding: 0.38rem 0.35rem;
+  border-radius: 6px;
   text-decoration: none !important;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 
 .venue-badge:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
   text-decoration: none !important;
 }
 
-.venue-badge--eccv { background: var(--badge-eccv); }
-.venue-badge--cvpr { background: var(--badge-cvpr); }
-.venue-badge--iccv { background: var(--badge-iccv); }
-.venue-badge--neurips { background: var(--badge-neurips); }
-.venue-badge--aaai { background: var(--badge-aaai); }
+.venue-badge--eccv { background: linear-gradient(180deg, #d95472 0%, var(--badge-eccv) 100%); }
+.venue-badge--cvpr { background: linear-gradient(180deg, #2b8ef0 0%, var(--badge-cvpr) 100%); }
+.venue-badge--iccv { background: linear-gradient(180deg, #e85d78 0%, var(--badge-iccv) 100%); }
+.venue-badge--neurips {
+  background: linear-gradient(135deg, #5b3fc4 0%, var(--badge-neurips) 55%, #1f1a4d 100%);
+  letter-spacing: 0.04em;
+  font-size: 0.62rem;
+}
+.venue-badge--aaai { background: linear-gradient(180deg, #1aa8bb 0%, var(--badge-aaai) 100%); }
 .venue-badge--tpami,
-.venue-badge--ijcv { background: var(--badge-journal); }
+.venue-badge--ijcv { background: linear-gradient(180deg, #2da862 0%, var(--badge-journal) 100%); }
 
 .pub-title {
   margin: 0 0 0.35rem;
@@ -324,8 +332,10 @@ a.pub-preview-link {
 
 .pub-authors {
   margin: 0 0 0.3rem;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
+  line-height: 1.4;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .pub-authors strong {
@@ -364,6 +374,12 @@ a.pub-preview-link {
   border-color: var(--link);
   background: #fff;
   text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .pub-authors {
+    white-space: normal;
+  }
 }
 
 @media (max-width: 560px) {
