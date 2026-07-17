@@ -120,36 +120,42 @@ a:hover {
   }
 }
 
-/* Contact icons */
-.contact-icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  margin: 1rem 0 2rem;
+/* Contact icons — Yadan-style elegant icons, light blue */
+.social {
   clear: both;
+  margin: 1rem 0 2rem;
+  text-align: left;
 }
 
-.contact-icons a {
+.social .contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 1.75rem;
+}
+
+.social .contact-icons a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  color: var(--text);
-  border-radius: 50%;
-  transition: color 0.15s ease, background 0.15s ease;
+  text-decoration: none !important;
+  margin: 0 0.35rem 0 0;
 }
 
-.contact-icons a:hover {
-  color: var(--link);
-  background: rgba(0, 123, 255, 0.08);
-  text-decoration: none;
+.social .contact-icons a i.elegant-icon {
+  font-size: 1em;
+  background: linear-gradient(135deg, #4fc3f7 0%, #90caf9 55%, #bbdefb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.contact-icons svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: currentColor;
+.social .contact-icons a:hover i.elegant-icon {
+  transform: translateY(-2px) scale(1.15);
+  filter: brightness(1.08);
 }
 
 /* Sections */
