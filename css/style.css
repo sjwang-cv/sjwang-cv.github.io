@@ -9,10 +9,11 @@
   --border: #dee2e6;
   --badge-eccv: #c23b5a;
   --badge-cvpr: #0b6bcb;
-  --badge-iccv: #d94866;
+  --badge-iccv: #d97706;
   --badge-neurips: #3d2b8e;
   --badge-aaai: #0e8a9a;
-  --badge-journal: #1f8a4c;
+  --badge-tpami: #1f8a4c;
+  --badge-ijcv: #0f766e;
   --maxw: 800px;
   --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
@@ -312,15 +313,15 @@ a.pub-preview-link {
 
 .venue-badge--eccv { background: linear-gradient(180deg, #d95472 0%, var(--badge-eccv) 100%); }
 .venue-badge--cvpr { background: linear-gradient(180deg, #2b8ef0 0%, var(--badge-cvpr) 100%); }
-.venue-badge--iccv { background: linear-gradient(180deg, #e85d78 0%, var(--badge-iccv) 100%); }
+.venue-badge--iccv { background: linear-gradient(180deg, #f59e0b 0%, var(--badge-iccv) 100%); }
 .venue-badge--neurips {
   background: linear-gradient(135deg, #5b3fc4 0%, var(--badge-neurips) 55%, #1f1a4d 100%);
   letter-spacing: 0.04em;
   font-size: 0.62rem;
 }
 .venue-badge--aaai { background: linear-gradient(180deg, #1aa8bb 0%, var(--badge-aaai) 100%); }
-.venue-badge--tpami,
-.venue-badge--ijcv { background: linear-gradient(180deg, #2da862 0%, var(--badge-journal) 100%); }
+.venue-badge--tpami { background: linear-gradient(180deg, #2da862 0%, var(--badge-tpami) 100%); }
+.venue-badge--ijcv { background: linear-gradient(180deg, #14b8a6 0%, var(--badge-ijcv) 100%); }
 
 .pub-title {
   margin: 0 0 0.35rem;
