@@ -12,9 +12,9 @@ title                    : "Shijie Wang"
 title_separator          : "-"
 name                     : &name "Shijie Wang"
 description              : &description "personal description"
-url                      : "https://Pual2013.github.io"
+url                      : "https://sjwang-cv.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "Pual2013/Pual2013.github.io"
+repository               : "sjwang-cv/sjwang-cv.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -26,7 +26,7 @@ author:
   pronouns         : # example: "she/her"  
   #bio              : ""
   location         : "China"
-  uri              : "https://pual2013.github.io"
+  uri              : "https://sjwang-cv.github.io"
   email            : "911971858@qq.com" 
 
   # Academic websites
