@@ -245,9 +245,9 @@ a:hover {
 
 .pub-item {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 1rem;
-  padding: 1.15rem 0;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1.1rem;
+  padding: 1.25rem 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -259,6 +259,28 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  gap: 0.5rem;
+}
+
+.pub-preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease;
+  background: #f1f3f5;
+}
+
+a.pub-preview-link:hover .pub-preview {
+  transform: scale(1.04);
+}
+
+a.pub-preview-link {
+  display: block;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
 }
 
 .venue-badge {
@@ -345,7 +367,7 @@ a:hover {
   }
 
   .pub-venue-col {
-    max-width: 5.5rem;
+    max-width: 11rem;
   }
 }
 
