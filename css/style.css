@@ -132,8 +132,8 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.15rem;
-  font-size: 1.75rem;
+  gap: 1.1rem;
+  font-size: 2.35rem;
 }
 
 .social .contact-icons a {
@@ -141,7 +141,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   text-decoration: none !important;
-  margin: 0 0.35rem 0 0;
+  margin: 0;
 }
 
 .social .contact-icons a i.elegant-icon {
