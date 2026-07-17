@@ -1,0 +1,359 @@
+/* Shijie Wang — academic homepage (Yadan / al-folio style) */
+
+:root {
+  --bg: #ffffff;
+  --text: #343a40;
+  --muted: #6c757d;
+  --link: #007bff;
+  --link-hover: #0056b3;
+  --border: #dee2e6;
+  --badge-eccv: #e85d75;
+  --badge-cvpr: #0a84ff;
+  --badge-iccv: #ff6482;
+  --badge-neurips: #af52de;
+  --badge-aaai: #30b0c7;
+  --badge-journal: #34c759;
+  --maxw: 800px;
+  --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* Header */
+.site-header {
+  margin-bottom: 1.25rem;
+}
+
+.site-title {
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.site-title .name-bold {
+  font-weight: 700;
+}
+
+.site-title .zh {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.site-affil {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* Profile + bio */
+.profile-block {
+  overflow: auto;
+  margin-bottom: 0.5rem;
+}
+
+.profile-photo {
+  float: right;
+  width: 180px;
+  height: 180px;
+  margin: 0 0 1rem 1.5rem;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.bio p {
+  margin: 0 0 1rem;
+  text-align: justify;
+}
+
+.bio p:last-child {
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 560px) {
+  .profile-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1.25rem;
+  }
+
+  .bio p {
+    text-align: left;
+  }
+}
+
+/* Contact icons */
+.contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin: 1rem 0 2rem;
+  clear: both;
+}
+
+.contact-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--text);
+  border-radius: 50%;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.contact-icons a:hover {
+  color: var(--link);
+  background: rgba(0, 123, 255, 0.08);
+  text-decoration: none;
+}
+
+.contact-icons svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+/* Sections */
+.section {
+  margin-top: 2.25rem;
+}
+
+.section h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* News — scrollable list (no table borders) */
+.news-scroll {
+  max-height: 18rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c7cd transparent;
+}
+
+.news-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-scroll::-webkit-scrollbar-thumb {
+  background: #c1c7cd;
+  border-radius: 999px;
+}
+
+.news-scroll:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.news-list li {
+  display: grid;
+  grid-template-columns: 6.25rem 1fr;
+  gap: 0.85rem 1.25rem;
+  padding: 0.55rem 0;
+  align-items: start;
+}
+
+.news-date {
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  padding-top: 0.05rem;
+}
+
+.news-text {
+  margin: 0;
+  color: var(--text);
+}
+
+.news-text strong {
+  font-weight: 700;
+}
+
+.news-text a {
+  color: #c71585;
+  font-weight: 500;
+}
+
+.news-text a:hover {
+  color: #a0126c;
+}
+
+@media (max-width: 480px) {
+  .news-list li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    padding: 0.7rem 0;
+  }
+}
+
+/* Publications */
+.pub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-item {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pub-item:last-child {
+  border-bottom: none;
+}
+
+.pub-venue-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.venue-badge {
+  display: block;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  padding: 0.35rem 0.4rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+}
+
+.venue-badge:hover {
+  filter: brightness(1.05);
+  text-decoration: none !important;
+}
+
+.venue-badge--eccv { background: var(--badge-eccv); }
+.venue-badge--cvpr { background: var(--badge-cvpr); }
+.venue-badge--iccv { background: var(--badge-iccv); }
+.venue-badge--neurips { background: var(--badge-neurips); }
+.venue-badge--aaai { background: var(--badge-aaai); }
+.venue-badge--tpami,
+.venue-badge--ijcv { background: var(--badge-journal); }
+
+.pub-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.pub-authors {
+  margin: 0 0 0.3rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.pub-authors strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pub-periodical {
+  margin: 0 0 0.55rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pub-links a {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: #f8f9fa;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.pub-links a:hover {
+  color: var(--link);
+  border-color: var(--link);
+  background: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 560px) {
+  .pub-item {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .pub-venue-col {
+    max-width: 5.5rem;
+  }
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}

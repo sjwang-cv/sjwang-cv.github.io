@@ -1,10 +1,7 @@
 ---
-permalink: /
+permalink: /about-legacy/
 title: "Welcome to Shijie Wang's Homepage!"
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
 ---
 
 # Biography
