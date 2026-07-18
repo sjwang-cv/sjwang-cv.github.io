@@ -13,4 +13,5 @@ package-lock.json
 _pdf_tmp/
 _make_previews.py
 _fix_previews.py
+data/scholar_debug.html
 

@@ -14,43 +14,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install fetch dependencies
+        run: pip install "curl_cffi>=0.7.0"
+
       - name: Fetch citation count
-        run: |
-          python3 <<'PY'
-          import json, re, urllib.request
-          from datetime import date, timezone
-          from pathlib import Path
+        env:
+          # Optional: paste a browser Cookie header from scholar.google.com
+          # into repo secret GOOGLE_SCHOLAR_COOKIE if Actions IPs get blocked.
+          GOOGLE_SCHOLAR_COOKIE: ${{ secrets.GOOGLE_SCHOLAR_COOKIE }}
+        run: python scripts/update_citations.py --soft-fail
 
-          scholar_id = "XLziKuQAAAAJ"
-          url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
-          req = urllib.request.Request(
-              url,
-              headers={
-                  "User-Agent": (
-                      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/120.0.0.0 Safari/537.36"
-                  )
-              },
-          )
-          with urllib.request.urlopen(req, timeout=45) as resp:
-              html = resp.read().decode("utf-8", errors="ignore")
-
-          matches = re.findall(r'class="gsc_rsb_std">(\d[\d,]*)</td>', html)
-          if not matches:
-              raise SystemExit("Could not parse Google Scholar citations")
-
-          citations = int(matches[0].replace(",", ""))
-          out = Path("data/citations.json")
-          out.parent.mkdir(parents=True, exist_ok=True)
-          payload = {
-              "scholar_id": scholar_id,
-              "citations": citations,
-              "updated": date.today().isoformat(),
-          }
-          out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-          print(payload)
-          PY
+      - name: Upload debug HTML if scrape failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scholar-debug
+          path: data/scholar_debug.html
+          if-no-files-found: ignore
 
       - name: Commit if changed
         run: |
