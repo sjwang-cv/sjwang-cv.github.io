@@ -449,8 +449,14 @@ a.pub-preview-link {
   }
 }
 
+.visitor-map {
+  width: min(280px, 70%);
+  margin: 2.5rem auto 0;
+  text-align: center;
+}
+
 .site-footer {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
   text-align: center;
