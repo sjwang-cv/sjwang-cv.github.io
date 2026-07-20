@@ -87,8 +87,15 @@ a:hover {
 
 /* Profile + bio */
 .profile-block {
-  overflow: auto;
   margin-bottom: 0.5rem;
+  padding-top: 0.55rem;
+  overflow: visible;
+}
+
+.profile-block::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .profile-photo {
