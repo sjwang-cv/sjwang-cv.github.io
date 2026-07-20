@@ -14,8 +14,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
 </head>
 <body>
+  <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1zm0 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm7.5-2.5a1 1 0 1 1 0-2H21a1 1 0 1 1 0 2h-1.5zM3 13a1 1 0 1 1 0-2h1.5a1 1 0 1 1 0 2H3zm14.95 5.45a1 1 0 0 1-1.4 1.4l-1.06-1.06a1 1 0 1 1 1.4-1.4l1.06 1.06zM8.51 7.11A1 1 0 0 1 7.1 5.7L6.05 4.65a1 1 0 0 1 1.4-1.4L8.5 5.7a1 1 0 0 1 .01 1.41zM7.11 15.49a1 1 0 0 1-1.41-.01L4.65 16.54a1 1 0 1 1-1.4-1.4l1.05-1.06a1 1 0 0 1 1.41 0 1 1 0 0 1 .4.91zm11.24-9.84a1 1 0 0 1 0 1.4l-1.06 1.06a1 1 0 1 1-1.4-1.4l1.06-1.06a1 1 0 0 1 1.4 0zM12 17a1 1 0 0 1 1 1v1.5a1 1 0 1 1-2 0V18a1 1 0 0 1 1-1z"/>
+    </svg>
+  </button>
   <div class="page">
     <header class="site-header">
       <h1 class="site-title"><span class="name-bold">Shijie</span> Wang <span class="zh">(王世杰)</span></h1>
@@ -314,6 +334,29 @@
 
   <script>
     document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    // Theme toggle
+    (function themeToggle() {
+      var root = document.documentElement;
+      var btn = document.getElementById("theme-toggle");
+      if (!btn) return;
+
+      function currentTheme() {
+        return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      }
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        try { localStorage.setItem("theme", theme); } catch (e) {}
+        btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+        btn.title = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+      }
+
+      applyTheme(currentTheme());
+      btn.addEventListener("click", function () {
+        applyTheme(currentTheme() === "dark" ? "light" : "dark");
+      });
+    })();
 
     // Load citation count from data/citations.json (updated daily by GitHub Action).
     (async function loadCitations() {
