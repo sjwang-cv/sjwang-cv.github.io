@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20260720dark2">
+  <link rel="stylesheet" href="css/style.css?v=20260720dark3">
   <style>
     /* Theme toggle aligned to page content (max 800px), not viewport edge */
     .theme-toggle {
@@ -364,9 +364,7 @@
       </ul>
     </section>
 
-    <div class="visitor-map" aria-label="Visitor map">
-      <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?d=Kk_8XogymTID255uLnbgrVVDgLbiVUeYhq6wtKDmnCw&cl=f8bbd0&w=a&t=tt&co=ffffff&ct=333333&cmo=f06292&cmn=e91e63"></script>
-    </div>
+    <div class="visitor-map" id="visitor-map" aria-label="Visitor map"></div>
 
     <footer class="site-footer">
       <p>© <span id="year">2026</span> Shijie Wang</p>
@@ -376,27 +374,52 @@
   <script>
     document.getElementById("year").textContent = String(new Date().getFullYear());
 
-    // Theme toggle
+    // Theme toggle + dark MapMyVisitors widget
     (function themeToggle() {
       var root = document.documentElement;
       var btn = document.getElementById("theme-toggle");
-      if (!btn) return;
+      var mapHost = document.getElementById("visitor-map");
+      var MAP_ID = "Kk_8XogymTID255uLnbgrVVDgLbiVUeYhq6wtKDmnCw";
 
       function currentTheme() {
         return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
       }
 
+      function mapSrc(theme) {
+        if (theme === "dark") {
+          return "https://mapmyvisitors.com/map.js?d=" + MAP_ID +
+            "&cl=6b7c8a&w=a&t=tt&co=121418&ct=e6e8eb&cmo=f06292&cmn=e91e63";
+        }
+        return "https://mapmyvisitors.com/map.js?d=" + MAP_ID +
+          "&cl=f8bbd0&w=a&t=tt&co=ffffff&ct=333333&cmo=f06292&cmn=e91e63";
+      }
+
+      function loadVisitorMap(theme) {
+        if (!mapHost) return;
+        mapHost.innerHTML = "";
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.id = "mapmyvisitors";
+        s.src = mapSrc(theme);
+        mapHost.appendChild(s);
+      }
+
       function applyTheme(theme) {
         root.setAttribute("data-theme", theme);
         try { localStorage.setItem("theme", theme); } catch (e) {}
-        btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-        btn.title = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+        if (btn) {
+          btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+          btn.title = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+        }
+        loadVisitorMap(theme);
       }
 
       applyTheme(currentTheme());
-      btn.addEventListener("click", function () {
-        applyTheme(currentTheme() === "dark" ? "light" : "dark");
-      });
+      if (btn) {
+        btn.addEventListener("click", function () {
+          applyTheme(currentTheme() === "dark" ? "light" : "dark");
+        });
+      }
     })();
 
     // Load citation count from data/citations.json (updated daily by GitHub Action).

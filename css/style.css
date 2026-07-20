@@ -563,6 +563,12 @@ a.pub-preview-link {
   width: min(280px, 70%);
   margin: 2.5rem auto 0;
   text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .visitor-map {
+  background: #121418;
 }
 
 .site-footer {
