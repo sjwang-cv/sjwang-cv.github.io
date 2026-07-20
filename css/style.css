@@ -98,6 +98,15 @@ a:hover {
   object-position: center 15%;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 0 3px rgba(79, 195, 247, 0.35),
+    0 8px 24px rgba(79, 195, 247, 0.28),
+    0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .bio p {
