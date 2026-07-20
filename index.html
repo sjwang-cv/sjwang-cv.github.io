@@ -64,7 +64,7 @@
 
     <section class="section" id="news" aria-labelledby="news-heading">
       <h2 id="news-heading">News</h2>
-      <div class="news-scroll" tabindex="0" aria-label="News feed">
+      <div class="news-scroll" id="news-scroll" tabindex="0" aria-label="News feed (auto-scrolls; hover to pause)">
         <ul class="news-list">
           <li>
             <span class="news-date">Jun, 2026</span>
@@ -334,6 +334,70 @@
       } catch (_) {
         /* keep fallback number in HTML */
       }
+    })();
+
+    // News auto-scroll: pause on hover / focus / manual scroll, then resume.
+    (function autoScrollNews() {
+      const box = document.getElementById("news-scroll");
+      if (!box) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const SPEED = 0.35; // px per frame (~21px/s at 60fps)
+      const PAUSE_AT_ENDS_MS = 1200;
+      const RESUME_AFTER_INTERACT_MS = 1800;
+
+      let paused = false;
+      let direction = 1;
+      let endPauseUntil = 0;
+      let resumeTimer = null;
+      let raf = 0;
+
+      function pause() {
+        paused = true;
+      }
+
+      function resume() {
+        paused = false;
+      }
+
+      function pauseTemporarily() {
+        pause();
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(resume, RESUME_AFTER_INTERACT_MS);
+      }
+
+      box.addEventListener("mouseenter", pause);
+      box.addEventListener("mouseleave", resume);
+      box.addEventListener("focusin", pause);
+      box.addEventListener("focusout", function (e) {
+        if (!box.contains(e.relatedTarget)) resume();
+      });
+      box.addEventListener("wheel", pauseTemporarily, { passive: true });
+      box.addEventListener("touchstart", pauseTemporarily, { passive: true });
+      box.addEventListener("pointerdown", pauseTemporarily);
+
+      function tick(now) {
+        raf = requestAnimationFrame(tick);
+        if (paused || now < endPauseUntil) return;
+
+        const maxScroll = box.scrollHeight - box.clientHeight;
+        if (maxScroll <= 1) return;
+
+        box.scrollTop += SPEED * direction;
+
+        if (direction > 0 && box.scrollTop >= maxScroll - 0.5) {
+          direction = -1;
+          endPauseUntil = now + PAUSE_AT_ENDS_MS;
+        } else if (direction < 0 && box.scrollTop <= 0.5) {
+          direction = 1;
+          endPauseUntil = now + PAUSE_AT_ENDS_MS;
+        }
+      }
+
+      raf = requestAnimationFrame(tick);
+      window.addEventListener("beforeunload", function () {
+        cancelAnimationFrame(raf);
+      });
     })();
   </script>
 </body>
