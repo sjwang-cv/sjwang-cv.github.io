@@ -13,7 +13,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260720dark">
+  <style>
+    /* Critical theme-toggle styles (avoid stale CSS cache) */
+    .theme-toggle {
+      position: fixed !important;
+      top: 1rem !important;
+      right: 1rem !important;
+      z-index: 9999 !important;
+      width: 2.75rem !important;
+      height: 2.75rem !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1px solid var(--theme-btn-border, #dee2e6) !important;
+      border-radius: 999px !important;
+      background: var(--theme-btn-bg, #fff) !important;
+      color: var(--text, #343a40) !important;
+      cursor: pointer !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12) !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon {
+      width: 1.2rem !important;
+      height: 1.2rem !important;
+      display: none !important;
+    }
+    html:not([data-theme="dark"]) .theme-toggle .icon-moon {
+      display: block !important;
+    }
+    html[data-theme="dark"] .theme-toggle .icon-sun {
+      display: block !important;
+    }
+  </style>
   <script>
     (function () {
       try {
@@ -33,7 +67,7 @@
       <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
     <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path fill="currentColor" d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1zm0 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm7.5-2.5a1 1 0 1 1 0-2H21a1 1 0 1 1 0 2h-1.5zM3 13a1 1 0 1 1 0-2h1.5a1 1 0 1 1 0 2H3zm14.95 5.45a1 1 0 0 1-1.4 1.4l-1.06-1.06a1 1 0 1 1 1.4-1.4l1.06 1.06zM8.51 7.11A1 1 0 0 1 7.1 5.7L6.05 4.65a1 1 0 0 1 1.4-1.4L8.5 5.7a1 1 0 0 1 .01 1.41zM7.11 15.49a1 1 0 0 1-1.41-.01L4.65 16.54a1 1 0 1 1-1.4-1.4l1.05-1.06a1 1 0 0 1 1.41 0 1 1 0 0 1 .4.91zm11.24-9.84a1 1 0 0 1 0 1.4l-1.06 1.06a1 1 0 1 1-1.4-1.4l1.06-1.06a1 1 0 0 1 1.4 0zM12 17a1 1 0 0 1 1 1v1.5a1 1 0 1 1-2 0V18a1 1 0 0 1 1-1z"/>
+      <path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zm9.04-2.54l1.41-1.41-1.79-1.8-1.41 1.42 1.79 1.79zM17.24 4.84l1.42-1.42 1.79 1.8-1.41 1.41-1.8-1.79zM20 11v2h3v-2h-3zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0-7h-2v3h2V1z"/>
     </svg>
   </button>
   <div class="page">
