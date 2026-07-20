@@ -88,11 +88,12 @@ a:hover {
   overflow-x: hidden;
 }
 
-/* Theme toggle — top right */
+/* Theme toggle — aligned to page content column */
 .theme-toggle {
   position: fixed;
   top: 1rem;
-  right: 1rem;
+  left: max(1rem, calc(50% + min(50vw, 400px) - 2.75rem - 1.25rem));
+  right: auto;
   z-index: 100;
   width: 2.5rem;
   height: 2.5rem;
@@ -106,6 +107,13 @@ a:hover {
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+@media (max-width: 860px) {
+  .theme-toggle {
+    left: auto;
+    right: 1rem;
+  }
 }
 
 .theme-toggle:hover {

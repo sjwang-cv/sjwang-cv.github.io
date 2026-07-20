@@ -15,11 +15,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=20260720dark">
   <style>
-    /* Critical theme-toggle styles (avoid stale CSS cache) */
+    /* Theme toggle aligned to page content (max 800px), not viewport edge */
     .theme-toggle {
       position: fixed !important;
       top: 1rem !important;
-      right: 1rem !important;
+      left: max(1rem, calc(50% + min(50vw, 400px) - 2.75rem - 1.25rem)) !important;
+      right: auto !important;
       z-index: 9999 !important;
       width: 2.75rem !important;
       height: 2.75rem !important;
@@ -46,6 +47,12 @@
     }
     html[data-theme="dark"] .theme-toggle .icon-sun {
       display: block !important;
+    }
+    @media (max-width: 860px) {
+      .theme-toggle {
+        left: auto !important;
+        right: 1rem !important;
+      }
     }
   </style>
   <script>
