@@ -26,7 +26,6 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: clip;
 }
 
 body {
@@ -37,7 +36,6 @@ body {
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
 }
 
 a {
@@ -54,6 +52,7 @@ a:hover {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem 1.25rem 4rem;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -88,7 +87,6 @@ a:hover {
 /* Profile + bio */
 .profile-block {
   margin-bottom: 0.5rem;
-  padding-top: 0.55rem;
   overflow: visible;
 }
 
@@ -98,22 +96,27 @@ a:hover {
   clear: both;
 }
 
-.profile-photo {
+.profile-photo-wrap {
   float: right;
+  margin: 0 0 1rem 1.5rem;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.profile-photo {
+  display: block;
   width: 180px;
   height: 180px;
-  margin: 0 0.35rem 1rem 1.5rem;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 12%;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   transform-origin: center center;
-  will-change: transform;
 }
 
-.profile-photo:hover {
-  transform: scale(1.04);
+.profile-photo-wrap:hover .profile-photo {
+  transform: scale(1.05);
   box-shadow:
     0 0 0 3px rgba(79, 195, 247, 0.35),
     0 8px 22px rgba(79, 195, 247, 0.25),
@@ -130,9 +133,10 @@ a:hover {
 }
 
 @media (max-width: 560px) {
-  .profile-photo {
+  .profile-photo-wrap {
     float: none;
     display: block;
+    width: fit-content;
     margin: 0 auto 1.25rem;
   }
 
