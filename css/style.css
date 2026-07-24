@@ -88,15 +88,11 @@ a:hover {
   overflow-x: hidden;
 }
 
-/* Theme toggle — aligned to page content column */
+/* Theme toggle — in header, above UQ logo */
 .theme-toggle {
-  position: fixed;
-  top: 1rem;
-  left: max(1rem, calc(50% + min(50vw, 400px) - 2.75rem - 1.25rem));
-  right: auto;
-  z-index: 100;
-  width: 2.5rem;
-  height: 2.5rem;
+  position: static;
+  width: 2.4rem;
+  height: 2.4rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,15 +101,10 @@ a:hover {
   background: var(--theme-btn-bg);
   color: var(--text);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-@media (max-width: 860px) {
-  .theme-toggle {
-    left: auto;
-    right: 1rem;
-  }
+  margin: 0 0 0.45rem auto;
+  padding: 0;
 }
 
 .theme-toggle:hover {
@@ -128,8 +119,8 @@ a:hover {
 
 .theme-toggle .icon-sun,
 .theme-toggle .icon-moon {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
   display: none;
 }
 
@@ -155,12 +146,17 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
   flex: 1;
 }
 
-.uq-logo-link {
+.site-header-right {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.uq-logo-link {
   display: block;
   line-height: 0;
   text-decoration: none !important;
-  margin-top: 0.15rem;
 }
 
 .uq-logo {
