@@ -453,11 +453,12 @@
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
       const SPEED = 0.55; // px per frame
-      const PAUSE_AT_BOTTOM_MS = 900;
+      const PAUSE_AT_BOTTOM_MS = 3000;
       const RESUME_AFTER_INTERACT_MS = 1800;
 
       let paused = false;
       let endPauseUntil = 0;
+      let waitingAtBottom = false;
       let resumeTimer = null;
       let raf = 0;
       let pos = box.scrollTop;
@@ -492,16 +493,27 @@
 
       function tick(now) {
         raf = requestAnimationFrame(tick);
-        if (paused || now < endPauseUntil) return;
+        if (paused) return;
+
+        // Hold at bottom for 3s, then jump to top.
+        if (waitingAtBottom) {
+          if (now < endPauseUntil) return;
+          waitingAtBottom = false;
+          pos = 0;
+          box.scrollTop = 0;
+          return;
+        }
+
+        if (now < endPauseUntil) return;
 
         const maxScroll = box.scrollHeight - box.clientHeight;
         if (maxScroll <= 1) return;
 
         pos += SPEED;
         if (pos >= maxScroll) {
+          pos = maxScroll;
           box.scrollTop = maxScroll;
-          pos = 0;
-          box.scrollTop = 0;
+          waitingAtBottom = true;
           endPauseUntil = now + PAUSE_AT_BOTTOM_MS;
           return;
         }
