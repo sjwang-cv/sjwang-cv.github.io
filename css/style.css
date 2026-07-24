@@ -143,7 +143,40 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 
 /* Header */
 .site-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
   margin-bottom: 1.25rem;
+}
+
+.site-header-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.uq-logo-link {
+  flex-shrink: 0;
+  display: block;
+  line-height: 0;
+  text-decoration: none !important;
+  margin-top: 0.15rem;
+}
+
+.uq-logo {
+  display: block;
+  width: min(190px, 42vw);
+  height: auto;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+.uq-logo-link:hover .uq-logo {
+  opacity: 1;
+}
+
+html[data-theme="dark"] .uq-logo {
+  filter: brightness(1.15);
 }
 
 .site-title {
