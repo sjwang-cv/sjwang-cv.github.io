@@ -446,18 +446,17 @@
       }
     })();
 
-    // News auto-scroll: pause on hover / focus / manual scroll, then resume.
+    // News auto-scroll: down only; jump to top when reaching bottom.
     (function autoScrollNews() {
       const box = document.getElementById("news-scroll");
       if (!box) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
       const SPEED = 0.55; // px per frame
-      const PAUSE_AT_ENDS_MS = 1200;
+      const PAUSE_AT_BOTTOM_MS = 900;
       const RESUME_AFTER_INTERACT_MS = 1800;
 
       let paused = false;
-      let direction = 1;
       let endPauseUntil = 0;
       let resumeTimer = null;
       let raf = 0;
@@ -468,7 +467,6 @@
       }
 
       function resume() {
-        // Sync accumulator to current scroll after user interaction.
         pos = box.scrollTop;
         paused = false;
       }
@@ -499,19 +497,12 @@
         const maxScroll = box.scrollHeight - box.clientHeight;
         if (maxScroll <= 1) return;
 
-        pos += SPEED * direction;
+        pos += SPEED;
         if (pos >= maxScroll) {
-          pos = maxScroll;
-          box.scrollTop = pos;
-          direction = -1;
-          endPauseUntil = now + PAUSE_AT_ENDS_MS;
-          return;
-        }
-        if (pos <= 0) {
+          box.scrollTop = maxScroll;
           pos = 0;
-          box.scrollTop = pos;
-          direction = 1;
-          endPauseUntil = now + PAUSE_AT_ENDS_MS;
+          box.scrollTop = 0;
+          endPauseUntil = now + PAUSE_AT_BOTTOM_MS;
           return;
         }
         box.scrollTop = pos;
