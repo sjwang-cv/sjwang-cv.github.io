@@ -88,28 +88,30 @@ a:hover {
   overflow-x: hidden;
 }
 
-/* Theme toggle — in header, above UQ logo */
+/* Theme toggle — compact, beside UQ logo */
 .theme-toggle {
   position: static;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.1rem;
+  height: 2.1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--theme-btn-border);
   border-radius: 999px;
   background: var(--theme-btn-bg);
-  color: var(--text);
+  color: var(--muted);
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-  margin: 0 0 0.45rem auto;
+  box-shadow: none;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  margin: 0;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--text);
   background: var(--theme-btn-hover);
-  transform: translateY(-1px);
 }
 
 .theme-toggle:focus-visible {
@@ -119,8 +121,8 @@ a:hover {
 
 .theme-toggle .icon-sun,
 .theme-toggle .icon-moon {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 0.95rem;
+  height: 0.95rem;
   display: none;
 }
 
@@ -135,9 +137,9 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 /* Header */
 .site-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 1rem 1.5rem;
+  gap: 1rem 1.25rem;
   margin-bottom: 1.25rem;
 }
 
@@ -149,8 +151,9 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 .site-header-right {
   flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .uq-logo-link {
@@ -161,7 +164,7 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 
 .uq-logo {
   display: block;
-  width: min(190px, 42vw);
+  width: min(170px, 38vw);
   height: auto;
   opacity: 0.95;
   transition: opacity 0.2s ease;
@@ -173,6 +176,21 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
 
 html[data-theme="dark"] .uq-logo {
   filter: brightness(1.15);
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .site-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .uq-logo {
+    width: min(150px, 55vw);
+  }
 }
 
 .site-title {

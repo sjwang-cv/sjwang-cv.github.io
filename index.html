@@ -13,32 +13,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20260724uq2">
+  <link rel="stylesheet" href="css/style.css?v=20260724uq3">
   <style>
-    /* Theme toggle sits in header, not fixed over the UQ logo */
+    /* Theme toggle: compact, next to UQ logo */
     .theme-toggle {
       position: static !important;
       top: auto !important;
       left: auto !important;
       right: auto !important;
-      width: 2.4rem !important;
-      height: 2.4rem !important;
+      width: 2.1rem !important;
+      height: 2.1rem !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       border: 1px solid var(--theme-btn-border, #dee2e6) !important;
       border-radius: 999px !important;
       background: var(--theme-btn-bg, #fff) !important;
-      color: var(--text, #343a40) !important;
+      color: var(--muted, #6c757d) !important;
       cursor: pointer !important;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+      box-shadow: none !important;
       padding: 0 !important;
-      margin: 0 0 0.45rem auto !important;
+      margin: 0 !important;
+    }
+    .theme-toggle:hover {
+      color: var(--text, #343a40) !important;
+      border-color: var(--text, #343a40) !important;
+      transform: none !important;
     }
     .theme-toggle .icon-sun,
     .theme-toggle .icon-moon {
-      width: 1.1rem !important;
-      height: 1.1rem !important;
+      width: 0.95rem !important;
+      height: 0.95rem !important;
       display: none !important;
     }
     html:not([data-theme="dark"]) .theme-toggle .icon-moon {
@@ -67,6 +72,9 @@
         <p class="site-affil"><a href="https://eecs.uq.edu.au/" target="_blank" rel="noopener noreferrer">The University of Queensland</a> · <a href="https://www.dlut.edu.cn/" target="_blank" rel="noopener noreferrer">Dalian University of Technology</a>.</p>
       </div>
       <div class="site-header-right">
+        <a class="uq-logo-link" href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer" title="The University of Queensland" aria-label="The University of Queensland">
+          <img class="uq-logo" src="images/uq-logo.svg" alt="The University of Queensland" width="190" height="50">
+        </a>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -75,9 +83,6 @@
             <path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zm9.04-2.54l1.41-1.41-1.79-1.8-1.41 1.42 1.79 1.79zM17.24 4.84l1.42-1.42 1.79 1.8-1.41 1.41-1.8-1.79zM20 11v2h3v-2h-3zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0-7h-2v3h2V1z"/>
           </svg>
         </button>
-        <a class="uq-logo-link" href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer" title="The University of Queensland" aria-label="The University of Queensland">
-          <img class="uq-logo" src="images/uq-logo.svg" alt="The University of Queensland" width="190" height="50">
-        </a>
       </div>
     </header>
 
