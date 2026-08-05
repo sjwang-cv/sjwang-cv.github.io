@@ -236,13 +236,6 @@ html[data-theme="dark"] .uq-logo {
   border-radius: 50%;
 }
 
-.profile-photo-link {
-  display: block;
-  border-radius: 50%;
-  cursor: zoom-in;
-  line-height: 0;
-}
-
 .profile-photo {
   display: block;
   width: 180px;
@@ -253,6 +246,9 @@ html[data-theme="dark"] .uq-logo {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   transform-origin: center center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .profile-photo-wrap:hover .profile-photo {
