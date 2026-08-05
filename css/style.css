@@ -236,6 +236,13 @@ html[data-theme="dark"] .uq-logo {
   border-radius: 50%;
 }
 
+.profile-photo-link {
+  display: block;
+  border-radius: 50%;
+  cursor: zoom-in;
+  line-height: 0;
+}
+
 .profile-photo {
   display: block;
   width: 180px;
