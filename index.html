@@ -128,7 +128,7 @@
 
     <section class="section" id="news" aria-labelledby="news-heading">
       <h2 id="news-heading">News</h2>
-      <div class="news-feed" aria-label="News feed">
+      <div class="news-scroll" id="news-scroll" tabindex="0" aria-label="News feed (auto-scrolls; hover to pause)">
         <ul class="news-list">
           <li>
             <span class="news-date">Sep, 2026</span>
@@ -435,6 +435,94 @@
       } catch (_) {
         /* keep fallback number in HTML */
       }
+    })();
+
+    // News auto-scroll: show five rows; jump to top after reaching the bottom.
+    (function autoScrollNews() {
+      const box = document.getElementById("news-scroll");
+      if (!box) return;
+
+      const VISIBLE_ROWS = 5;
+
+      function fitVisibleRows() {
+        const items = box.querySelectorAll(".news-list > li");
+        if (!items.length) return;
+        const last = items[Math.min(VISIBLE_ROWS, items.length) - 1];
+        const first = items[0];
+        const height = last.offsetTop + last.offsetHeight - first.offsetTop;
+        if (height > 0) box.style.maxHeight = height + "px";
+      }
+
+      fitVisibleRows();
+      window.addEventListener("resize", fitVisibleRows);
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const SPEED = 0.55;
+      const PAUSE_AT_BOTTOM_MS = 3000;
+      const RESUME_AFTER_INTERACT_MS = 1800;
+
+      let paused = false;
+      let endPauseUntil = 0;
+      let waitingAtBottom = false;
+      let resumeTimer = null;
+      let raf = 0;
+      let pos = box.scrollTop;
+
+      function pause() { paused = true; }
+      function resume() {
+        pos = box.scrollTop;
+        paused = false;
+      }
+      function pauseTemporarily() {
+        pause();
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(resume, RESUME_AFTER_INTERACT_MS);
+      }
+
+      box.addEventListener("mouseenter", pause);
+      box.addEventListener("mouseleave", resume);
+      box.addEventListener("focusin", pause);
+      box.addEventListener("focusout", function (e) {
+        if (!box.contains(e.relatedTarget)) resume();
+      });
+      box.addEventListener("wheel", pauseTemporarily, { passive: true });
+      box.addEventListener("touchstart", pauseTemporarily, { passive: true });
+      box.addEventListener("pointerdown", pauseTemporarily);
+      box.addEventListener("scroll", function () {
+        if (paused) pos = box.scrollTop;
+      }, { passive: true });
+
+      function tick(now) {
+        raf = requestAnimationFrame(tick);
+        if (paused) return;
+        if (waitingAtBottom) {
+          if (now < endPauseUntil) return;
+          waitingAtBottom = false;
+          pos = 0;
+          box.scrollTop = 0;
+          return;
+        }
+        if (now < endPauseUntil) return;
+
+        const maxScroll = box.scrollHeight - box.clientHeight;
+        if (maxScroll <= 1) return;
+
+        pos += SPEED;
+        if (pos >= maxScroll) {
+          pos = maxScroll;
+          box.scrollTop = maxScroll;
+          waitingAtBottom = true;
+          endPauseUntil = now + PAUSE_AT_BOTTOM_MS;
+          return;
+        }
+        box.scrollTop = pos;
+      }
+
+      raf = requestAnimationFrame(tick);
+      window.addEventListener("beforeunload", function () {
+        cancelAnimationFrame(raf);
+      });
     })();
   </script>
 </body>

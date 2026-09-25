@@ -12,6 +12,7 @@
   --preview-bg: #f1f3f5;
   --news-accent: #c71585;
   --news-accent-hover: #a0126c;
+  --scrollbar: #c1c7cd;
   --theme-btn-bg: #ffffff;
   --theme-btn-border: #dee2e6;
   --theme-btn-hover: #f1f3f5;
@@ -38,6 +39,7 @@ html[data-theme="dark"] {
   --preview-bg: #1a1e24;
   --news-accent: #f472b6;
   --news-accent-hover: #f9a8d4;
+  --scrollbar: #4b5563;
   --theme-btn-bg: #1a1e24;
   --theme-btn-border: #3a4149;
   --theme-btn-hover: #252a31;
@@ -381,7 +383,30 @@ html[data-theme="dark"] .uq-logo {
   color: #fff;
 }
 
-/* News */
+/* News — scrollable list, five rows visible */
+.news-scroll {
+  max-height: calc(5 * (1.65em + 1.1rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+.news-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-scroll::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 999px;
+}
+
+.news-scroll:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
 .news-list {
   list-style: none;
   margin: 0;
