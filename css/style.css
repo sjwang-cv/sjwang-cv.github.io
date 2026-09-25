@@ -25,7 +25,6 @@
   --badge-ijcv: #0f766e;
   --maxw: 800px;
   --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
-  --news-row-h: 2.7rem;
 }
 
 html[data-theme="dark"] {
@@ -384,10 +383,10 @@ html[data-theme="dark"] .uq-logo {
   color: #fff;
 }
 
-/* News — scrollable list, five rows visible */
+/* News — auto-scrolling list */
 .news-scroll {
-  height: calc(var(--news-row-h) * 5);
-  overflow: hidden auto;
+  max-height: 18rem;
+  overflow-y: auto;
   overscroll-behavior: contain;
   padding-right: 0.35rem;
   background: var(--bg);
@@ -419,23 +418,20 @@ html[data-theme="dark"] .uq-logo {
   display: grid;
   grid-template-columns: 6.25rem 1fr;
   gap: 0.85rem 1.25rem;
-  height: var(--news-row-h);
-  align-items: center;
-  padding: 0;
+  padding: 0.55rem 0;
+  align-items: start;
 }
 
 .news-date {
   font-weight: 500;
   color: var(--text);
   white-space: nowrap;
+  padding-top: 0.05rem;
 }
 
 .news-text {
   margin: 0;
   color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .news-text strong {
@@ -451,10 +447,12 @@ html[data-theme="dark"] .uq-logo {
   color: var(--news-accent-hover);
 }
 
-#publications {
-  position: relative;
-  z-index: 1;
-  background: var(--bg);
+@media (max-width: 480px) {
+  .news-list li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    padding: 0.7rem 0;
+  }
 }
 
 /* Publications */
