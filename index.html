@@ -132,7 +132,7 @@
         <ul class="news-list">
           <li>
             <span class="news-date">Sep, 2026</span>
-            <p class="news-text"><strong>One paper</strong> accepted to the <strong>NeurIPS 2026</strong> Main Track and <strong>one paper</strong> accepted to the <strong>NeurIPS 2026</strong> Evaluations &amp; Datasets (ED) Track.</p>
+            <p class="news-text"><strong>One paper</strong> accepted to <strong>NeurIPS 2026</strong> (Main Track) and <strong>one paper</strong> accepted to the <strong>ED Track</strong>.</p>
           </li>
           <li>
             <span class="news-date">Sep, 2026</span>
@@ -441,20 +441,6 @@
     (function autoScrollNews() {
       const box = document.getElementById("news-scroll");
       if (!box) return;
-
-      const VISIBLE_ROWS = 5;
-
-      function fitVisibleRows() {
-        const items = box.querySelectorAll(".news-list > li");
-        if (!items.length) return;
-        const last = items[Math.min(VISIBLE_ROWS, items.length) - 1];
-        const first = items[0];
-        const height = last.offsetTop + last.offsetHeight - first.offsetTop;
-        if (height > 0) box.style.maxHeight = height + "px";
-      }
-
-      fitVisibleRows();
-      window.addEventListener("resize", fitVisibleRows);
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
