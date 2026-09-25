@@ -383,7 +383,7 @@ html[data-theme="dark"] .uq-logo {
   color: #fff;
 }
 
-/* News — auto-scrolling list */
+/* News — scrollable list */
 .news-scroll {
   max-height: 18rem;
   overflow-y: auto;
