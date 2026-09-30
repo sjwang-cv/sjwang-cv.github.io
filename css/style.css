@@ -23,6 +23,7 @@
   --badge-aaai: #0e8a9a;
   --badge-tpami: #1f8a4c;
   --badge-ijcv: #0f766e;
+  --badge-mm: #b91c1c;
   --maxw: 800px;
   --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
@@ -538,6 +539,7 @@ a.pub-preview-link {
 .venue-badge--aaai { background: linear-gradient(180deg, #1aa8bb 0%, var(--badge-aaai) 100%); }
 .venue-badge--tpami { background: linear-gradient(180deg, #2da862 0%, var(--badge-tpami) 100%); }
 .venue-badge--ijcv { background: linear-gradient(180deg, #14b8a6 0%, var(--badge-ijcv) 100%); }
+.venue-badge--mm { background: linear-gradient(180deg, #e11d48 0%, var(--badge-mm) 100%); }
 
 .pub-title {
   margin: 0 0 0.35rem;
