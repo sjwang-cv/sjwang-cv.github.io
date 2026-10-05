@@ -525,16 +525,16 @@ a.pub-preview-link {
 }
 
 .venue-badge--eccv {
-  background: linear-gradient(135deg, #f07a92 0%, #c23b5a 50%, #8e1f38 100%);
+  background: linear-gradient(to right, #f07a92 0%, #c23b5a 50%, #8e1f38 100%);
 }
 .venue-badge--cvpr {
-  background: linear-gradient(135deg, #5eb0ff 0%, #0b6bcb 50%, #06457f 100%);
+  background: linear-gradient(to right, #5eb0ff 0%, #0b6bcb 50%, #06457f 100%);
 }
 .venue-badge--iccv {
-  background: linear-gradient(135deg, #fbbf24 0%, #d97706 50%, #92400e 100%);
+  background: linear-gradient(to right, #fbbf24 0%, #d97706 50%, #92400e 100%);
 }
 .venue-badge--neurips {
-  background: linear-gradient(135deg, #6d4aff 0%, #3d2b8e 50%, #241a5c 100%);
+  background: linear-gradient(to right, #6d4aff 0%, #3d2b8e 50%, #241a5c 100%);
   color: #fff;
   text-transform: none;
   letter-spacing: 0.02em;
@@ -543,16 +543,16 @@ a.pub-preview-link {
   border-radius: 8px;
 }
 .venue-badge--aaai {
-  background: linear-gradient(135deg, #2fd0e3 0%, #0e8a9a 50%, #065964 100%);
+  background: linear-gradient(to right, #2fd0e3 0%, #0e8a9a 50%, #065964 100%);
 }
 .venue-badge--tpami {
-  background: linear-gradient(135deg, #4ade80 0%, #1f8a4c 50%, #14532d 100%);
+  background: linear-gradient(to right, #4ade80 0%, #1f8a4c 50%, #14532d 100%);
 }
 .venue-badge--ijcv {
-  background: linear-gradient(135deg, #2dd4bf 0%, #0f766e 50%, #115e59 100%);
+  background: linear-gradient(to right, #2dd4bf 0%, #0f766e 50%, #115e59 100%);
 }
 .venue-badge--mm {
-  background: linear-gradient(135deg, #fb7185 0%, #b91c1c 50%, #7f1d1d 100%);
+  background: linear-gradient(to right, #fb7185 0%, #b91c1c 50%, #7f1d1d 100%);
 }
 
 .pub-title {
