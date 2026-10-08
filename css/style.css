@@ -435,6 +435,10 @@ html[data-theme="dark"] .uq-logo {
   color: var(--text);
 }
 
+.news-text::before {
+  content: "🎉 ";
+}
+
 .news-text strong {
   font-weight: 700;
 }
