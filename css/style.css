@@ -436,7 +436,13 @@ html[data-theme="dark"] .uq-logo {
 }
 
 .news-text::before {
-  content: "🎉 ";
+  content: "";
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.35em;
+  vertical-align: -0.18em;
+  background: url("../images/party-popper.png") center / contain no-repeat;
 }
 
 .news-text strong {
